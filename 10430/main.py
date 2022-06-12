@@ -1,0 +1,8 @@
+a, b, c = input().split()
+intA = int(a)
+intB = int(b)
+intC = int(c)
+print((intA + intB) % intC)
+print(((intA % intC) + (intB % intC)) % intC)
+print((intA * intB) % intC)
+print(((intA % intC) * (intB % intC)) % intC)
