@@ -1,0 +1,5 @@
+k, n, m = input().split()
+K = int(k)
+N = int(n)
+M = int(m)
+print(max(K*N - M, 0))
