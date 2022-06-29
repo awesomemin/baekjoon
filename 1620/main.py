@@ -10,6 +10,6 @@ for _ in range(N):
 for _ in range(M):
     command = input().rstrip()
     if command.isalpha():
-        print(poketmon_book.index(command))
+        sys.stdout.write(str(poketmon_book.index(command)) + "\n")
     else:
-        print(poketmon_book[int(command)])
+        sys.stdout.write(poketmon_book[int(command)] + "\n")
