@@ -1,39 +1,67 @@
 #include <iostream>
 #include <cstring>
+using namespace std;
 
-int main() {
-	char board[50] = { NULL, };
-	std::cin >> board;
-	
-	int continuous_X = 0;
-	int start_index = 0;
-	int is_prev_X = 0;
-	for(int i = 0; i < 50; i++) {
-		if(board[i] == 'X' && is_prev_X == 0) {
-			continuous_X++;
-			start_index = i;
-		} else if (board[i] == 'X') {
-			continuous_X++;
-		} else {
-			if(continuous_X % 2 == 1) {
-				std::cout << "-1\n";
-				return 0;
+int main(void) {
+	char board[51];
+	for(int i = 0; i < 51; i++) {
+		board[i] = 0;
+	}
+	cin>>board;
+	int len = strlen(board);
+	char * answer = new char[len];
+	for(int i = 0; i < len; i++) {
+		answer[i] = 0;
+	}
+	int continuedX = 0;
+	bool isPossible = true;
+	for(int i = 0; i < len; i++) {
+		if(continuedX == 4) {
+			for(int j = i - 4; j < i; j++) {
+				answer[j] = 'A';
+			}
+			continuedX = 0;
+		}
+		
+		if(board[i] == 'X') {
+			continuedX++;
+		}
+		
+		if(board[i] == '.') {
+			if(continuedX == 2) {
+				for(int j = i - 2; j < i; j++) {
+					answer[j] = 'B';
+				}
+				answer[i] = '.';
+				continuedX = 0;
+			} else if(continuedX == 1 || continuedX == 3) {
+				isPossible = false;
+				break;
 			} else {
-				if(continuous_X % 4 == 0) {
-					for(int j = start_index; j < i; j++) {
-						board[j] = 'A';
-					}
-				} else {
-					for (int j = start_index; j < i; j++) {
-						board[j] = 'A';
-					}
+				answer[i] = '.';
+			}
+		}
+		
+		if(i == len - 1 && board[i] == 'X') {
+			if(continuedX == 2) {
+				for(int j = i - 1; j <= i; j++) {
+					answer[j] = 'B';
+				}
+			} else if(continuedX == 1 || continuedX == 3) {
+				isPossible = false;
+				break;
+			} else if(continuedX == 4) {
+				for(int j = i - 3; j <= i; j++) {
+					answer[j] = 'A';
 				}
 			}
 		}
 	}
 	
-	for(int i = 0; i < 50; i++) {
-		std::cout << board[i];
+	if(isPossible) {
+		cout<<answer<<endl;
+	} else {
+		cout<<-1<<endl;
 	}
 	
 	return 0;
