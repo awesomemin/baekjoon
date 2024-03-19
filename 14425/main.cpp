@@ -1,10 +1,14 @@
 #include <iostream>
 #include <string>
-#include <set>
+#include <unordered_set>
 using namespace std;
 
 int main(void) {
-	set<string> S;
+	cin.tie(nullptr);
+	cout.tie(nullptr);
+	ios_base::sync_with_stdio(false);
+	
+	unordered_set<string> S;
 	int N, M;
 	cin>>N>>M;
 	int answer = 0;
