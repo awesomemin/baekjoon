@@ -30,6 +30,9 @@ void bfs(int startCity) {
 }
 
 int main(void) {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
 	cin>>N>>M>>K>>startCity;
 	for(int i = 0; i < M; i++) {
 		int A, B; cin>>A>>B;
