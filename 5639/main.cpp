@@ -36,6 +36,8 @@ void postOrder(Node * n) {
 }
 
 int main(void) {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL); cout.tie(NULL);
 	while(!cin.eof()) {
 		int d; cin>>d;
 		Node * newNode = new Node;
